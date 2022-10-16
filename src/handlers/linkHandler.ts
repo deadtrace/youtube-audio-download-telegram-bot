@@ -2,6 +2,7 @@ import { Context, InputFile } from "grammy";
 import ytdl from "ytdl-core";
 import { existsSync, mkdirSync, createWriteStream, rmSync } from "fs";
 import { join } from "path";
+import User from "../models/User";
 
 const linkHandler = async (ctx: Context) => {
   const urlEntity = ctx.message?.entities?.find(
@@ -11,6 +12,11 @@ const linkHandler = async (ctx: Context) => {
     return ctx.reply(
       "К сожалению, мне не удалось распознать ссылку в твоём сообщении."
     );
+  }
+
+  const user = await User.findOne({ username: ctx.from?.username });
+  if (!user) {
+    return ctx.reply("К сожалению, тебе не доступен данный функционал");
   }
 
   const { offset, length } = urlEntity;

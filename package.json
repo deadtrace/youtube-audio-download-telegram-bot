@@ -1,7 +1,7 @@
 {
   "name": "youtube-audio-download-telegram-bot",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Telegram bot that downloads audio of YouTube video and sends it to user",
   "main": "src/index.js",
   "scripts": {
     "start": "npx tsc && node ."
@@ -16,6 +16,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "grammy": "^1.11.2",
+    "mongoose": "^6.6.5",
     "ytdl-core": "^4.11.2"
   }
 }
